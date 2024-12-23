@@ -20,5 +20,31 @@ pipeline{
                 }
             }
         }
+
+        // building docker image
+        stage("build docker image"){
+            steps{
+                withDockerRegistry([
+                    credentialsId: 'dockerlogin', url: ""
+                ]){
+                    script{
+                        app = docker.build("javaapp")
+                        
+                    }
+                }
+            }
+        }
+        // push to ECR
+        stage("push to ECR"){
+            steps{
+                script{
+                    docker.withRegistry("https://717279705656.dkr.ecr.us-east-1.amazonaws.com", "ecr:us-east-1:aws-credentials")
+                        {
+                            app.push("latest")
+                        }
+                }
+            }
      }    
+}
+
 }
