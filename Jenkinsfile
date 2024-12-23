@@ -11,6 +11,6 @@ pipeline{
                 }
             }
         }
-        // stage()
+        // stages()
      }    
 }
