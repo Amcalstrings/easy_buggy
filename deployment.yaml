@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tech365-deployment
+  name: caleb-deployment
   labels:
     app: tech365
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tech365
+      app: caleb
   template:
     metadata:
       labels:
-        app: tech365
+        app: caleb
     spec:
       containers:
-      - name: tech365
-        image: 924338258393.dkr.ecr.us-east-1.amazonaws.com/javaapp
+      - name: caleb
+        image: 717279705656.dkr.ecr.us-east-1.amazonaws.com/javaapp
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
@@ -26,9 +26,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tech365-service
+  name: caleb-service
   labels:
-    app: tech365
+    app: caleb
 spec:
   type: LoadBalancer
   ports:
@@ -37,4 +37,4 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: tech365
+    app: caleb
