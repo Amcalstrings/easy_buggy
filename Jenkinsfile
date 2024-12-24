@@ -46,7 +46,7 @@ pipeline{
             }
      }    
 
-        // deploy to kubernetes cluster
+        // deploy to Kubernetes cluster
         stage("DeployToKubernetes"){
             steps{
                 withKubeConfig([credentialsId: "kubelogin"]){
