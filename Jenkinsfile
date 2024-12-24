@@ -34,7 +34,7 @@ pipeline{
                 }
             }
         }
-        // push to ECR hub
+        // push image to ECR hub
         stage("push to ECR"){
             steps{
                 script{
